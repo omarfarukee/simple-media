@@ -1,23 +1,48 @@
 import logo from './logo.svg';
 import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Main from './Lauout/Main';
+import { Toaster } from 'react-hot-toast';
+import Home from './pages/Home/Home';
+import SignUp from './pages/Signup/SignUp';
+import Login from './pages/Login/Login';
+import Media from './pages/Media/Media';
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element:<Main></Main>,
+      children:[
+        {
+          path:'/',
+          element:<Home></Home>
+        },
+        {
+          path:'/home',
+          element:<Home></Home>
+        },
+        {
+          path:'/signUp',
+          element:<SignUp></SignUp>
+        },
+        {
+          path:'/logIn',
+          element:<Login></Login>
+        },
+        {
+          path:'/media',
+          element:<Media></Media>
+        },
+      ]
+    }
+  ])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='max-w-[1140px] mx-auto'>
+    <RouterProvider router={router}>
+
+    </RouterProvider>
+    <Toaster></Toaster>
     </div>
   );
 }
