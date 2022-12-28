@@ -7,6 +7,7 @@ import Home from './pages/Home/Home';
 import SignUp from './pages/Signup/SignUp';
 import Login from './pages/Login/Login';
 import Media from './pages/Media/Media';
+import Details from './pages/Details/Details';
 
 function App() {
   const router = createBrowserRouter([
@@ -34,11 +35,20 @@ function App() {
           path:'/media',
           element:<Media></Media>
         },
+        {
+          path:'/posts/:id',
+            element:<Details></Details>,
+            loader:async ({params}) =>{
+            return fetch(`http://localhost:5000/posts/${params.id}`)
+            }
+        },
       ]
     }
   ])
   return (
-    <div className='max-w-[1140px] mx-auto'>
+    // className='max-w-[1140px] mx-auto'
+
+    <div >
     <RouterProvider router={router}>
 
     </RouterProvider>

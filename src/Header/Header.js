@@ -17,8 +17,8 @@ const Header = () => {
             <li><Link to='/media'>media</Link></li>
     </>
     return (
-        <div>
-            <div className="navbar bg-base-100 shadow-2xl rounded-lg">
+        <div className=''>
+            <div className="navbar bg-base-100 shadow-2xl rounded-lg fixed">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">

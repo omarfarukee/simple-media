@@ -1,9 +1,11 @@
 import React from 'react';
+import AddPost from '../AddPost/AddPost';
 
 const Home = () => {
     return (
-        <div>
-            <h1>this is home</h1>
+        <div className='mb-10'>
+            <h1>add post</h1>
+            <AddPost></AddPost>
         </div>
     );
 };
