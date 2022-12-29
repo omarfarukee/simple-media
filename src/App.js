@@ -8,6 +8,8 @@ import SignUp from './pages/Signup/SignUp';
 import Login from './pages/Login/Login';
 import Media from './pages/Media/Media';
 import Details from './pages/Details/Details';
+import About from './pages/About/About';
+import FixedAbout from './pages/fixedAbout/FixedAbout';
 
 function App() {
   const router = createBrowserRouter([
@@ -34,6 +36,14 @@ function App() {
         {
           path:'/media',
           element:<Media></Media>
+        },
+        {
+          path:'/about',
+          element:<About></About>
+        },
+        {
+          path:'/setInfo',
+          element:<FixedAbout></FixedAbout>
         },
         {
           path:'/posts/:id',

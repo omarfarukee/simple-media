@@ -26,7 +26,7 @@ const AddPost = () => {
             console.log(imgData.data.url)
 
 
-            const product = {
+            const posts = {
                 title : data.title ,
                 image: imgData.data.url,
                 details: data.details,
@@ -42,7 +42,7 @@ const AddPost = () => {
                     'content-type': 'application/json', 
 
                 }, 
-                body: JSON.stringify(product)
+                body: JSON.stringify(posts)
             })
             .then(res => res.json())
             .then(result => {

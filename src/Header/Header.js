@@ -15,6 +15,8 @@ const Header = () => {
     const headItems = <>
             <li><Link to='/home'>home</Link></li>
             <li><Link to='/media'>media</Link></li>
+            <li><Link to='/setInfo'>about</Link></li>
+            <li><Link to='/about'>Info set</Link></li>
     </>
     return (
         <div className=''>
