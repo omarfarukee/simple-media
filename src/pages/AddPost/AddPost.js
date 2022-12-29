@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const AddPost = () => {
+    const {user} = useContext(AuthContext)
     const { register, handleSubmit,formState: { errors } } = useForm();
     const imageHosKey = '29473dd4ab78ebc95009722bc0558d38';
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
     const handleAddItem = (data) => {
         console.log(data)
 
@@ -32,6 +34,8 @@ const AddPost = () => {
                 details: data.details,
                 react: data.react,
                 date: data.date,
+                names: user?.displayName,
+                photo: user?.photoURL
             }
 
           
@@ -50,7 +54,7 @@ const AddPost = () => {
                 console.log(result)
                 alert('its can take few moment please wait')
                 toast.success('added Item successfully')
-            //  navigate('/')
+            navigate('/media')
             })
 
           }

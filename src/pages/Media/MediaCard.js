@@ -3,8 +3,9 @@ import { AiFillLike } from 'react-icons/ai';
 import { GoComment } from 'react-icons/go';
 import { FiSend } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { FaUserCircle } from 'react-icons/fa';
 const MediaCard = ({ post }) => {
-    const { title, image, details, _id, react } = post
+    const { title, image, details, _id, react, names, photo, date } = post
     const [likes, setLikes] = useState(react)
     post.react = likes
     // const [green, setGreen] = useState('')
@@ -43,13 +44,21 @@ const MediaCard = ({ post }) => {
     }
 
     return (
-        <div className='mb-8 shadow-lg rounded-lg mt-20'>
+        <div className='mb-8 shadow-lg rounded-lg mt-20 border'>
             <div className='hidden'>
                 {_id}
             </div>
-            <div>
-                <img src={image} alt="" className='rounded' />
+            <div className='p-3 border-b-4 mb-3 flex justify-between items-center'>
+                <div className='flex items-center'>
+                {photo === null ?<span className='mr-1'><FaUserCircle className='text-3xl'></FaUserCircle></span>  : <img src={photo} alt=""  className='rounded-full h-10' />}
+                <p className='font-bold'>{names}</p>
+                </div>
+                <p className='font-bold'>Date- {date}</p>
             </div>
+            <div>
+                <img src={image} alt="" className='rounded w-full' />
+            </div>
+            <h3 className='text-2xl font-bold pl-3'>{title}</h3>
             <div className='p-3 border-b-4'>
                 <p>{details?.slice(1, 200)}...<span><Link to={`/posts/${_id}`}><button className="p-1 rounded-lg hover:bg-slate-200 font-bold">see more</button></Link> </span></p>
 

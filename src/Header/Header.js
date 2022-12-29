@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 
@@ -12,11 +12,26 @@ const Header = () => {
           .catch(error => console.error(error))
         navigate('/')
       }
+      const [info, setInfo] = useState([])
+    useEffect(() => {
+        fetch(`http://localhost:5000/about?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setInfo(data))
+
+    }, [user?.email])
     const headItems = <>
             <li><Link to='/home'>home</Link></li>
             <li><Link to='/media'>media</Link></li>
             <li><Link to='/setInfo'>about</Link></li>
-            <li><Link to='/about'>Info set</Link></li>
+           {
+            user?.uid && <>
+            {
+              info[0]?.university ? <></> : <li><Link to='/about'>Info set</Link></li>
+            }
+            </>
+           } 
+            
+            
     </>
     return (
         <div className=''>
