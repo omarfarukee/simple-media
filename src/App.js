@@ -10,6 +10,8 @@ import Media from './pages/Media/Media';
 import Details from './pages/Details/Details';
 import About from './pages/About/About';
 import FixedAbout from './pages/fixedAbout/FixedAbout';
+import Modal from './pages/Modal/Modal';
+import Edit from './pages/Edit/Edit';
 
 function App() {
   const router = createBrowserRouter([
@@ -52,6 +54,13 @@ function App() {
             return fetch(`http://localhost:5000/posts/${params.id}`)
             }
         },
+        {
+          path:'/about/:id',
+            element:<Edit></Edit>,
+            loader:async ({params}) =>{
+            return fetch(`http://localhost:5000/about/${params.id}`)
+            }
+        },
       ]
     }
   ])
@@ -64,6 +73,7 @@ function App() {
     </RouterProvider>
     <Toaster></Toaster>
     </div>
+    // hhh
   );
 }
 

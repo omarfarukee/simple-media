@@ -14,7 +14,7 @@ const Media = () => {
     });
     return (
         <div className='flex justify-center'>
-            <div className='w-2/4 cards'>
+            <div className='w-2/4 cards-s'>
                   {
                 posts?.map(post => <MediaCard
                 key={post._id}

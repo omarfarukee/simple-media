@@ -15,9 +15,6 @@ const MediaCard = ({ post }) => {
         const update = (likes + 1);
         const number = parseInt(update)
         setLikes(number)
-        const green = 'text-green-400'
-        // setGreen(green)
-
         fetch(`http://localhost:5000/posts/${_id}`, {
             method: 'PUT',
 
@@ -54,7 +51,7 @@ const MediaCard = ({ post }) => {
                 <img src={image} alt="" className='rounded' />
             </div>
             <div className='p-3 border-b-4'>
-                <p>{details.slice(1, 200)}...<span><Link to={`/posts/${_id}`}><button className="p-1 rounded-lg hover:bg-slate-200 font-bold">see more</button></Link> </span></p>
+                <p>{details?.slice(1, 200)}...<span><Link to={`/posts/${_id}`}><button className="p-1 rounded-lg hover:bg-slate-200 font-bold">see more</button></Link> </span></p>
 
             </div>
             <div className='p-3 flex items-center'>
