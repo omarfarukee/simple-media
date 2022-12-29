@@ -47,7 +47,7 @@ const About = () => {
 
                         <div className="form-control w-full max-w-xs">
                             <label className="label"> <span className="label-text">Name</span></label>
-                            <input disabled defaultValue={user.displayName} type="text" {...register("name", {
+                            <input disabled defaultValue={user?.displayName} type="text" {...register("name", {
                                 // required: "Required"
                             })} className="input input-bordered w-full max-w-xs" />
                             {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
@@ -55,7 +55,7 @@ const About = () => {
 
                         <div className="form-control w-full max-w-xs">
                             <label  className="label"> <span className="label-text">Email</span></label>
-                            <input disabled defaultValue={user.email} type="text" {...register("email", {
+                            <input disabled defaultValue={user?.email} type="text" {...register("email", {
                                 // required: "Required"
                             })} className="input input-bordered w-full max-w-xs" />
                             {errors.email && <p className='text-red-500'>{errors.email.message}</p>}

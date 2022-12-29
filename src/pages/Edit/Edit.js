@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import EditField from './EditField';
 
@@ -9,7 +9,7 @@ const Edit = () => {
     const loadData = useLoaderData()
     const information = loadData[0]
     const [users, setUsers] = useState(information)
-
+    const navigate= useNavigate()
     const handleUpdate = event =>{
         event.preventDefault()
         console.log(users)
@@ -25,10 +25,11 @@ const Edit = () => {
 
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
+            console.log(data)
             if (data.modifiedCount > 0){
                 console.log(data);
                 toast.success('successfully updated')
+                navigate('/setInfo')
             }
             
         })
@@ -42,8 +43,7 @@ const Edit = () => {
         setUsers(newUser)
     }
     return (
-        <div className='pt-20'>
-            <h1>this is edit {loadData[0]._id}</h1>
+        <div className='pt-40'>
             <div className='flex justify-center'>
                <form className='w-96' onSubmit={handleUpdate}>
                     <input name="name" disabled defaultValue={user?.displayName}  className="mt-2 input input-bordered w-full " /> <br />

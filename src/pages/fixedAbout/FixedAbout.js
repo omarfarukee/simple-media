@@ -21,12 +21,18 @@ const FixedAbout = () => {
               
              <label htmlFor="item-modal" className="btn btn-outline" >Edit user Info </label>
             </div>
-            
+            <div className='flex justify-center'>
+                {
+                    info[0]?.university ? <></>:
+                     <p className='text-3xl text-red-400 font-bold'>Please set your info on Set info option</p>
+                }
+               
+            </div>
             <div  className='flex justify-center'>
                 
                 <div className='pt-10 flex items-center'>
                     <div className='mr-8'>
-                        {user?.photoURL ? <img src={user?.photoURL} alt="" /> : <p className='text-9xl'><FaUserCircle></FaUserCircle> </p>}
+                        {user?.photoURL ? <img className='rounded-full h-28' src={user?.photoURL} alt="" /> : <p className='text-9xl'><FaUserCircle></FaUserCircle> </p>}
                     </div>
                     <div>
                         <form>
@@ -35,7 +41,7 @@ const FixedAbout = () => {
 
                                 <div className="form-control w-full max-w-xs">
                                     <label className="label"> <span className="label-text">Name</span></label>
-                                    <input disabled defaultValue={user.displayName} type="text" {...register("name", {
+                                    <input disabled defaultValue={user?.displayName} type="text" {...register("name", {
                                         // required: "Required"
                                     })} className="input input-bordered w-full max-w-xs" />
                                     {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
@@ -43,7 +49,7 @@ const FixedAbout = () => {
 
                                 <div className="form-control w-full max-w-xs">
                                     <label className="label"> <span className="label-text">Email</span></label>
-                                    <input disabled defaultValue={user.email} type="text" {...register("email", {
+                                    <input disabled defaultValue={user?.email} type="text" {...register("email", {
                                         // required: "Required"
                                     })} className="input input-bordered w-full max-w-xs" />
                                     {errors.email && <p className='text-red-500'>{errors.email.message}</p>}

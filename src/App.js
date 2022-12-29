@@ -12,6 +12,7 @@ import About from './pages/About/About';
 import FixedAbout from './pages/fixedAbout/FixedAbout';
 import Modal from './pages/Modal/Modal';
 import Edit from './pages/Edit/Edit';
+import PrivateRoute from './Private/PrivateRoute';
 
 function App() {
   const router = createBrowserRouter([
@@ -45,7 +46,7 @@ function App() {
         },
         {
           path:'/setInfo',
-          element:<FixedAbout></FixedAbout>
+          element: <PrivateRoute><FixedAbout></FixedAbout></PrivateRoute> 
         },
         {
           path:'/posts/:id',
