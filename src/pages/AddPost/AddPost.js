@@ -62,7 +62,11 @@ const AddPost = () => {
     }
 
     return (
-        <div className='mt-20'>
+        <div className='pt-28'>
+            <div className='flex justify-center mb-5'>
+                <p className='text-3xl text-green-400 font-bold'>Add post</p>
+            </div>
+            
              <div className=' flex justify-center'>
                 <form onSubmit={handleSubmit(handleAddItem)}>
 

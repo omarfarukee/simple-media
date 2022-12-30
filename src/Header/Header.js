@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { FaUserCircle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 
@@ -26,7 +27,7 @@ const Header = () => {
            {
             user?.uid && <>
             {
-              info[0]?.university ? <></> : <li><Link to='/about'>Info set</Link></li>
+              info[0]?.university ? <></> : <li><Link to='/about'>Info-set</Link></li>
             }
             </>
            } 
@@ -45,7 +46,7 @@ const Header = () => {
                             {headItems}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                    <a className="btn btn-ghost normal-case text-xl">OFP MEDIA</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -55,6 +56,9 @@ const Header = () => {
                 <div className="navbar-end">
                 {
             user?.uid ? <p className='mr-3 font-bold text-sm'>'{ user.displayName}'</p> : <p className='font-bold text-sm mr-3'>'user not login'</p>
+          } 
+          {
+            user?.photoURL  ? <img src={user?.photoURL} alt=""  className='rounded-full h-10 mr-3' /> : <span className='mr-1'><FaUserCircle className='text-3xl'></FaUserCircle></span>
           }
                     {
                         user?.uid ? <a className="btn" onClick={handleLogOut}>Log-out</a> :

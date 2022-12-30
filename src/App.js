@@ -13,6 +13,7 @@ import FixedAbout from './pages/fixedAbout/FixedAbout';
 import Modal from './pages/Modal/Modal';
 import Edit from './pages/Edit/Edit';
 import PrivateRoute from './Private/PrivateRoute';
+import AddPost from './pages/AddPost/AddPost';
 
 function App() {
   const router = createBrowserRouter([
@@ -39,6 +40,10 @@ function App() {
         {
           path:'/media',
           element:<Media></Media>
+        },
+        {
+          path:'/addPost',
+          element:<PrivateRoute><AddPost></AddPost></PrivateRoute> 
         },
         {
           path:'/about',

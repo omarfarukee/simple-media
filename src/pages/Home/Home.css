@@ -1,0 +1,11 @@
+.homes{
+    width: 60%; 
+    height: 70vh;
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url(../../images/image.jfif);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 10%;
+    align-items: center;
+}

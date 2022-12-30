@@ -65,7 +65,7 @@ const MediaCard = ({ post }) => {
             </div>
             <div className='p-3 flex items-center'>
             
-                  <p className='text-2xl'><button className='mr-3'><span onClick={count} ><AiFillLike className={likes > 0 ? 'text-green-300' : ''}></AiFillLike></span> </button></p>
+                  <p className='text-2xl'><button className='mr-3' title='Click twice on like for 1 like'><span onClick={count} ><AiFillLike className={likes > 0 ? 'text-green-300' : ''}></AiFillLike></span> </button></p>
                     
                 
                 

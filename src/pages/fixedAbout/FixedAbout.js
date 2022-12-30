@@ -14,17 +14,18 @@ const FixedAbout = () => {
             .then(data => setInfo(data))
 
     }, [user?.email])
-    // console.log(info[0].phone)
+    console.log(info[0]?.phone)
     return (
         <div>
             <div className='pt-20 flex justify-end mr-2'>
               
-             <label htmlFor="item-modal" className="btn btn-outline" >Edit user Info </label>
+           { info[0]?.university ? <label htmlFor="item-modal" className="btn btn-outline" >Edit user Info </label> : <></>}  
+         
             </div>
             <div className='flex justify-center'>
                 {
                     info[0]?.university ? <></>:
-                     <p className='text-3xl text-red-400 font-bold'>Please set your info on Set info option</p>
+                     <p className='text-3xl text-red-400 font-bold'>Please set your info on 'Info-set' menu</p>
                 }
                
             </div>
