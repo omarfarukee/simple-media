@@ -1,7 +1,9 @@
-### site name : OFP-Media 
+# site name : OFP-Media 
 ## site link : https://simple-media-8fe4b.web.app/ 
 
-# used- 
+### Desktop View only
+
+### used- 
 - HTML 
 - CSS 
 - Java script 
