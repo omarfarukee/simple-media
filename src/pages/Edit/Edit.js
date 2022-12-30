@@ -14,7 +14,7 @@ const Edit = () => {
         event.preventDefault()
         console.log(users)
 
-         fetch(`http://localhost:5000/about/${information?._id}`, {
+         fetch(`https://mid-news-server.vercel.app/about/${information?._id}`, {
             method: 'PUT',
 
             headers: {

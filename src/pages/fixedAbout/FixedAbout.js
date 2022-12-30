@@ -9,7 +9,7 @@ const FixedAbout = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [info, setInfo] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/about?email=${user?.email}`)
+        fetch(`https://mid-news-server.vercel.app/about?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setInfo(data))
 

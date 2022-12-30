@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 
 const About = () => {
     const {logOut, user} = useContext(AuthContext)
     const { register, handleSubmit,formState: { errors } } = useForm();
-    
+    const navigate = useNavigate()
    
     const handleAddUserInfo = (data) =>{
 
@@ -21,7 +22,7 @@ const About = () => {
         }
        
 
-        fetch('http://localhost:5000/about', {
+        fetch('https://mid-news-server.vercel.app/about', {
             method: 'POST',
             headers : {
                 'content-type' : 'application/json'
@@ -33,6 +34,8 @@ const About = () => {
             console.log(data)
             if(data.acknowledged){
               toast.success('user info saved')
+                navigate('/setInfo')
+                window.location.reload()
                 // form.reset()
             }
         })

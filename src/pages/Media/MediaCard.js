@@ -19,7 +19,7 @@ const MediaCard = ({ post }) => {
         const update = (likes + 1);
         const number = parseInt(update)
         setLikes(number)
-        fetch(`http://localhost:5000/posts/${_id}`, {
+        fetch(`https://mid-news-server.vercel.app/posts/${_id}`, {
             method: 'PUT',
 
             headers: {
@@ -65,7 +65,7 @@ const MediaCard = ({ post }) => {
         }
        
 
-        fetch('http://localhost:5000/comments', {
+        fetch('https://mid-news-server.vercel.app/comments', {
             method: 'POST',
             headers : {
                 'content-type' : 'application/json'
@@ -105,7 +105,7 @@ const MediaCard = ({ post }) => {
             </div>
             <div className='p-3 flex items-center'>
             
-                  <p className='text-2xl'><button className='mr-3' title='Click twice on like for 1 like'><span onClick={count} ><AiFillLike className={likes > 0 ? 'text-green-300' : ''}></AiFillLike></span> </button></p>
+                  <p className='text-2xl'><button className='mr-3' title='Click twice on like button for 1 like'><span onClick={count} ><AiFillLike className={likes > 0 ? 'text-green-300' : ''}></AiFillLike></span> </button></p>
                     
                 
                 
@@ -114,10 +114,10 @@ const MediaCard = ({ post }) => {
                 <div onClick={hides} className='text-2xl ml-10'> <p className={hide}><button><GoComment></GoComment></button></p></div>
                
                     <div className={show}>
-                    <form onSubmit={handleAddComments}>
-                        <input name='comment' type="text" className='bg-gray-200 h-10 rounded-lg border w-96' />
+                    <form onSubmit={handleAddComments} className='flex'>
+                        <input placeholder='write your comment' name='comment' type="text" className='bg-gray-200 h-10 rounded-lg border w-96' required/>
                         <input name='categoryId' type='text' className='w-12 ml-2 rounded border' disabled defaultValue={_id} />
-                        <button className="p-2 hover:bg-gray-400 rounded-2xl font-bold ml-2"><FiSend></FiSend> </button>
+                     {user?.uid ? <button className="p-2 hover:bg-gray-400 rounded-3xl font-bold ml-2"><FiSend></FiSend> </button> : <button className="p-2 hover:bg-gray-400 rounded-3xl font-bold ml-2" disabled title='please login for comment'><FiSend></FiSend> </button>}   
                     </form>
                     </div>
            
@@ -125,6 +125,6 @@ const MediaCard = ({ post }) => {
             </div>
         </div>
     );
-};
+};<button className="p-2 hover:bg-gray-400 rounded-3xl font-bold ml-2"><FiSend></FiSend> </button>
 
 export default MediaCard;

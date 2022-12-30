@@ -6,7 +6,7 @@ const MostReact = () => {
     const { data: mosts = [], refetch} = useQuery({
         queryKey: ['mosts'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/posts`);
+            const res = await fetch(`https://mid-news-server.vercel.app/posts`);
             const data = await res.json();
             return data;
         }  

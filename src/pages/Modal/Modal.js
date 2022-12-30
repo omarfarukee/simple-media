@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { FaUserEdit } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
@@ -14,7 +15,7 @@ const Modal = () => {
     // console.log(info[0])
      
     useEffect(() => {
-        fetch(`http://localhost:5000/about?email=${user?.email}`)
+        fetch(`https://mid-news-server.vercel.app/about?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setInfo(data))
 
@@ -25,7 +26,7 @@ const Modal = () => {
         event.preventDefault()
         console.log(review)
 
-        // fetch(`http://localhost:5000/about?email=${user?.email}`, {
+        // fetch(`https://mid-news-server.vercel.app/about?email=${user?.email}`, {
         //     method: 'POST',
 
         //     headers: {
@@ -69,7 +70,10 @@ const Modal = () => {
                     <input onChange={handleChange}  name='phone' defaultValue={info[0]?.phone} type="text" placeholder="phone" className=" mt-3 input input-bordered w-full " required /> <br />
                     <button className="btn btn-success mt-3 w-full">Submit</button>
                 </form> */}
-             <Link to={`/about/${info[0]?._id}`}><button className='btn btn-info'>Edit your profile</button></Link> 
+                <div className='flex justify-center'>
+                                 <Link to={`/about/${info[0]?._id}`}><button className='btn btn-info'><FaUserEdit className='mr-2 text-2xl'></FaUserEdit> Edit your profile</button></Link> 
+
+                </div>
             </div>
         </div>
     

@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaBookReader, FaHome, FaUserCircle } from 'react-icons/fa';
+import {GrMultimedia } from 'react-icons/gr';
+import {BsFillInfoSquareFill} from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 
@@ -15,19 +17,19 @@ const Header = () => {
       }
       const [info, setInfo] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/about?email=${user?.email}`)
+        fetch(`https://mid-news-server.vercel.app/about?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setInfo(data))
 
     }, [user?.email])
     const headItems = <>
-            <li><Link to='/home'>home</Link></li>
-            <li><Link to='/media'>media</Link></li>
-            <li><Link to='/setInfo'>about</Link></li>
+            <li><Link to='/home'><FaHome></FaHome>home</Link></li>
+            <li><Link to='/media'><GrMultimedia></GrMultimedia> media</Link></li>
+            <li><Link to='/setInfo'><FaBookReader></FaBookReader> about</Link></li>
            {
             user?.uid && <>
             {
-              info[0]?.university ? <></> : <li><Link to='/about'>Info-set</Link></li>
+              info[0]?.university ? <></> : <li><Link to='/about'><BsFillInfoSquareFill></BsFillInfoSquareFill> Info-set</Link></li> 
             }
             </>
            } 
@@ -46,7 +48,7 @@ const Header = () => {
                             {headItems}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">OFP MEDIA</a>
+                 <Link to='/home'><a className="btn normal-case text-xl">OFP MEDIA</a></Link>   
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

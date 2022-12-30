@@ -58,21 +58,21 @@ function App() {
           path:'/posts/:id',
             element:<Details></Details>,
             loader:async ({params}) =>{
-            return fetch(`http://localhost:5000/posts/${params.id}`)
+            return fetch(`https://mid-news-server.vercel.app/posts/${params.id}`)
             }
         },
         {
           path:'/about/:id',
             element:<Edit></Edit>,
             loader:async ({params}) =>{
-            return fetch(`http://localhost:5000/about/${params.id}`)
+            return fetch(`https://mid-news-server.vercel.app/about/${params.id}`)
             }
         },
         {
           path:'/comments/:id',
             element:<Comments></Comments> ,
             loader:async ({params}) =>{
-            return fetch(`http://localhost:5000/comments/${params.id}`)
+            return fetch(`https://mid-news-server.vercel.app/comments/${params.id}`)
             }
         },
       ]

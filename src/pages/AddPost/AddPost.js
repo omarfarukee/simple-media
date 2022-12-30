@@ -39,7 +39,7 @@ const AddPost = () => {
             }
 
           
-            fetch('http://localhost:5000/posts', {
+            fetch('https://mid-news-server.vercel.app/posts', {
 
                 method: 'POST', 
                 headers: {

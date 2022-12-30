@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
+import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
@@ -43,8 +44,11 @@ const Login = () => {
     }
     return (
         <div className='h-[800px] flex justify-center items-center'>
-        <div className='lg:w-96 shadow-2xl p-10 rounded'>
-            <h2 className='text-4xl'>login</h2>
+        <div className='lg:w-96 shadow-2xl p-10 rounded-3xl'>
+            <div className='flex justify-center'>
+                <h2 className='text-3xl'>login</h2>
+            </div>
+            
             <form onSubmit={handleSubmit(handleLogin)}>
                 <div className="form-control w-full max-w-xs mb-5">
                     <label className="label">
@@ -76,7 +80,7 @@ const Login = () => {
                 </div>
              
                <div className="divider">OR</div>
-               <button onClick={handleGoogle} className='btn btn-primary w-full'> <span className='pr-2'> </span>Login With Google</button>
+               <button onClick={handleGoogle} className='btn btn-primary w-full'> <span className='pr-2'> </span><FcGoogle className='mr-2 text-2xl'></FcGoogle> Login With Google</button>
             </form>
         </div>
     </div>
