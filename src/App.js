@@ -14,6 +14,7 @@ import Modal from './pages/Modal/Modal';
 import Edit from './pages/Edit/Edit';
 import PrivateRoute from './Private/PrivateRoute';
 import AddPost from './pages/AddPost/AddPost';
+import Comments from './pages/Comments/Comments';
 
 function App() {
   const router = createBrowserRouter([
@@ -65,6 +66,13 @@ function App() {
             element:<Edit></Edit>,
             loader:async ({params}) =>{
             return fetch(`http://localhost:5000/about/${params.id}`)
+            }
+        },
+        {
+          path:'/comments/:id',
+            element:<Comments></Comments> ,
+            loader:async ({params}) =>{
+            return fetch(`http://localhost:5000/comments/${params.id}`)
             }
         },
       ]

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Comments from '../Comments/Comments';
 import DetailsCard from './DetailsCard';
 
 const Details = () => {
@@ -16,6 +17,7 @@ const Details = () => {
                     ></DetailsCard>)
                 }
             </div>
+           
         </div>
     );
 };

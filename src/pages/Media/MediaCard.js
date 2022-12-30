@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AiFillLike } from 'react-icons/ai';
 import { GoComment } from 'react-icons/go';
 import { FiSend } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
+import { toast } from 'react-hot-toast';
+import { AuthContext } from '../../Context/AuthProvider';
 const MediaCard = ({ post }) => {
+    const {user} = useContext(AuthContext)
     const { title, image, details, _id, react, names, photo, date } = post
     const [likes, setLikes] = useState(react)
     post.react = likes
@@ -43,6 +46,42 @@ const MediaCard = ({ post }) => {
         setShow(block)
     }
 
+    const handleAddComments = (event) => {
+        event.preventDefault();
+        const form = event.target
+        const comment = form.comment.value
+        const names = user?.displayName
+        const categoryId = form.categoryId.value
+        const photoURL = user?.photoURL
+        
+        const commentPost ={
+
+            name : names,
+            img: photoURL,
+            comment,
+            categoryId
+           
+           
+        }
+       
+
+        fetch('http://localhost:5000/comments', {
+            method: 'POST',
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(commentPost)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.acknowledged){
+                toast.success("comment Successfully done")
+                form.reset()
+            }
+        })
+        .catch(err => console.error(err))
+    }
     return (
         <div className='mb-8 shadow-lg rounded-lg mt-20 border'>
             <div className='hidden'>
@@ -60,7 +99,8 @@ const MediaCard = ({ post }) => {
             </div>
             <h3 className='text-2xl font-bold pl-3'>{title}</h3>
             <div className='p-3 border-b-4'>
-                <p>{details?.slice(1, 200)}...<span><Link to={`/posts/${_id}`}><button className="p-1 rounded-lg hover:bg-slate-200 font-bold">see more</button></Link> </span></p>
+                <p>{details?.slice(1, 200)}...<span> <Link to={`/posts/${_id}`}><button className="p-1 rounded-lg hover:bg-slate-200 font-bold">read more</button></Link> </span></p> 
+                <p><Link to={`/comments/${_id}`}><button className="p-1 rounded-lg hover:bg-slate-200 font-bold">see comments..</button></Link></p>
 
             </div>
             <div className='p-3 flex items-center'>
@@ -74,8 +114,9 @@ const MediaCard = ({ post }) => {
                 <div onClick={hides} className='text-2xl ml-10'> <p className={hide}><button><GoComment></GoComment></button></p></div>
                
                     <div className={show}>
-                    <form>
-                        <input type="text" className='bg-gray-200 h-10 rounded-lg border w-96' />
+                    <form onSubmit={handleAddComments}>
+                        <input name='comment' type="text" className='bg-gray-200 h-10 rounded-lg border w-96' />
+                        <input name='categoryId' type='text' className='w-12 ml-2 rounded border' disabled defaultValue={_id} />
                         <button className="p-2 hover:bg-gray-400 rounded-2xl font-bold ml-2"><FiSend></FiSend> </button>
                     </form>
                     </div>
